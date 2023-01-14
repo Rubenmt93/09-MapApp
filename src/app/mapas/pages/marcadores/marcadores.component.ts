@@ -4,14 +4,22 @@ import * as mapboxgl from 'mapbox-gl';
 @Component({
   selector: 'app-marcadores',
   templateUrl: './marcadores.component.html',
-  styles: [` 
+  styles: [`
     .mapa-container{
        height: 100%;
-      width: 100%;       
+      width: 100%;
     }
-    
+    .list-group{
+      position:fixed;
+      top:20px;
+      right: 20px;
+      z-index:999
+    }
+    li{
+      cursor: pointer;
+    }
     `
-   
+
   ]
 })
 export class MarcadoresComponent implements AfterViewInit  {
@@ -20,7 +28,7 @@ export class MarcadoresComponent implements AfterViewInit  {
   mapa!: mapboxgl.Map;
   zoomLevel:number =15;
   center: [number, number] =[ -15.559472 , 28.059403];
- 
+
   constructor() { }
 
   ngAfterViewInit (): void {
@@ -35,13 +43,22 @@ export class MarcadoresComponent implements AfterViewInit  {
   //   new mapboxgl.Marker({ element: markerHtml})
   //   .setLngLat( this.center)
   //   .addTo(this.mapa)
-  // }
 
-    new mapboxgl.Marker({ })
+
+  //   new mapboxgl.Marker({ })
+  //   .setLngLat( this.center)
+  //   .addTo(this.mapa)
+  
+  }
+  irMarcador(){
+
+  }
+  agregarMarcador(){
+  const color = "#xxxxxx".replace(/x/g, y=>(Math.random()*16|0).toString(16));
+
+    const nuevoMarcador = new mapboxgl.Marker({draggable:true, color: color})
     .setLngLat( this.center)
     .addTo(this.mapa)
   }
 
-
-
-} 
+}
