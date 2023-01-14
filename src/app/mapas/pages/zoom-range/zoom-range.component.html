@@ -5,7 +5,13 @@
            Zoom: {{zoomLevel | number:'2.2-2'}}
            - Lng,Lat [ 123,321]
         </label>
-        <input type="range" class="form-range" >
+        <input  type="range" 
+                class="form-range" 
+                [value]="zoomLevel"
+                min="0"
+                max="18"
+                (input)="zoomCambio( zoomInput.value)"
+                #zoomInput>
     </div>
     <div class="col-12">
         <button class="btn btn-primary"
