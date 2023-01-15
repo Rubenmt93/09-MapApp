@@ -54,8 +54,11 @@ export class MarcadoresComponent implements AfterViewInit  {
   //   .addTo(this.mapa)
   
   }
-  irMarcador(){
-
+  irMarcador(marker:mapboxgl.Marker){
+   
+    this.mapa.flyTo({
+      center: marker.getLngLat()
+    })
   }
   agregarMarcador(){
     const color = "#xxxxxx".replace(/x/g, y=>(Math.random()*16|0).toString(16));
@@ -71,6 +74,10 @@ export class MarcadoresComponent implements AfterViewInit  {
     }
 
     this.marcadores.push( newMarket)
+    console.log(newMarket.marker.getLngLat());
+    
+    
+
   }
 
 }
