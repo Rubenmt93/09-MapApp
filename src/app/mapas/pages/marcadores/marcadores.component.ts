@@ -79,6 +79,10 @@ export class MarcadoresComponent implements AfterViewInit  {
     this.marcadores.push( newMarket)
     
     this.guardarMarcadoresLocalStorage()
+    nuevoMarcador.on('dragend', () => {
+      this.guardarMarcadoresLocalStorage();
+      
+    })
 
   }
 
@@ -115,8 +119,19 @@ export class MarcadoresComponent implements AfterViewInit  {
         marker: nuevoMarcador,
         color:m.color
       })
+       nuevoMarcador.on('dragend', () => {
+        this.guardarMarcadoresLocalStorage();
+        
+       })
     })
     
   }
+  borrarMarcador(index : number){
+    
+    
+    this.marcadores[index].marker?.remove()
+    this.marcadores.splice(index,1);
+    this.guardarMarcadoresLocalStorage()
 
+  }
 }
