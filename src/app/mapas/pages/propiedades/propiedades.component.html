@@ -12,8 +12,9 @@
         <div class="row">
             <div class="col-4 mb-2" 
                 *ngFor="let propiedad of propiedades">
+                
                 <div class="card">
-                    <img src="..." class="card-img-top" alt="">
+                    <app-minimapa class="card-img-top" [lngLat]="propiedad.lngLat"></app-minimapa>
                     <div class="card-body"> 
                         <h5 class="card-tittle">{{propiedad.titulo}}</h5>
                         <p class=" card-text"> {{propiedad.descripcion}}</p>
